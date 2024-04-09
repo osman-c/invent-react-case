@@ -1,0 +1,342 @@
+$primary: #fb4a5c;
+$secondary: rgba(25, 25, 25, 0.1);
+
+$mobile: 400px;
+$tablet: 900px;
+
+* {
+  margin: 0
+}
+
+h1 {
+  @media screen and (min-width: $tablet) {
+    font-size: 52px;
+  }
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: $secondary;
+}
+
+@mixin divide {
+  &>*:not(:last-child):after {
+    content: "";
+    height: 100%;
+    border: 1px solid;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+@mixin divide-vertical {
+  &>*:not(:last-child):after {
+    content: "";
+    width: 100%;
+    border: 1px solid;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.divide {
+  @include divide
+}
+
+.divide-vertical {
+  @include divide-vertical
+}
+
+.app-wrapper {
+  padding: 1.5rem 1rem;
+  margin: 0 auto;
+  max-width: 1040px;
+
+  @media screen and (max-width: $mobile) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.app-form {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.search-page {
+  .app-form {
+    padding: 1rem 0 2rem 0; // justify-content: space-between;
+    border-bottom: 2px solid;
+
+    @media screen and (max-width: $mobile) {
+      padding: 1rem 0 2rem 0;
+    }
+  }
+
+  .content {
+    margin-top: 1rem;
+    padding: 1rem 0;
+    gap: 1rem;
+
+    @media screen and (max-width: $mobile) {
+      margin-top: 0.5rem;
+    }
+
+    .card {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.movie-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 16px;
+
+  thead {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  tbody {
+    tr:nth-child(odd) {
+      background-color: $secondary;
+    }
+  }
+
+  th,
+  td {
+    padding: 1rem 1rem;
+    min-width: 100px;
+
+    @media screen and (max-width: $mobile) {
+      padding: 0.5rem 0.5rem;
+      min-width: 0;
+    }
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary
+    }
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  @media screen and (max-width: $tablet) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @media screen and (min-width: $tablet) {
+      @include divide;
+    }
+
+    @media screen and (max-width: $tablet) {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  .prev {
+    display: flex;
+    align-items: center;
+  }
+
+  .next {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    @media screen and (max-width: $tablet) {
+      justify-content: start;
+    }
+  }
+}
+
+.genres {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  div {
+    padding: 0.25rem 0.5rem;
+    background-color: $primary;
+    color: white;
+    border-radius: 0.25rem;
+  }
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .title {
+    h1 {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .content {
+    display: flex;
+    gap: 1rem;
+
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+
+    .details {
+      display: flex;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+
+      .plot {
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (max-width: $mobile) {
+          font-size: 18px;
+        }
+
+        &::after {
+          content: "";
+          border: 1px solid;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+      }
+
+      .cast {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+      }
+
+      .genres {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .summary {
+    display: flex;
+  }
+}
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 300px;
+
+  .ratings {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column-reverse;
+    min-width: auto;
+  }
+}
+
+.button {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 0.5rem;
+  background-color: $primary;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: rgba($primary, 0.9)
+  }
+
+  &:active {
+    background-color: $primary;
+  }
+
+  &.small {
+    height: 24px;
+    border-radius: 0.25rem;
+    font-size: 14px;
+  }
+}
+
+.label {
+
+  input,
+  select {
+    margin-left: 0.5rem;
+  }
+
+}
+
+.input {
+  border: 1px solid;
+  height: 36px;
+  border-radius: 0.5rem;
+
+  &.small {
+    border: 1px solid;
+    height: 20px;
+    border-radius: 0.25rem;
+  }
+}
+
+.select {
+  height: 40px;
+  border-radius: 0.5rem;
+
+  &.small {
+    border-radius: 0.5rem;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}

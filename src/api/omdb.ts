@@ -1,3 +1,4 @@
+// normally i wouldn't do something like this
 const API_KEY = "8607f37e";
 
 export type SearchMovie = {
